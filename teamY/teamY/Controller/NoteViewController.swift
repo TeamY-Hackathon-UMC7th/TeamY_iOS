@@ -10,9 +10,9 @@ import UIKit
 class NoteViewController: UIViewController {
     // 임시 데이터
     private let data: [NoteModel] = [
-        NoteModel(coffeeName: "아이스 아메리카노", drinkingDate: "2025.01.11", drinkingTime: "00", sleepingDate: "2025.01.11", sleepingTime: "00"),
-        NoteModel(coffeeName: "카페라떼", drinkingDate: "2025.01.11", drinkingTime: "00", sleepingDate: "2025.01.11", sleepingTime: "00"),
-        NoteModel(coffeeName: "자바칩 프라푸치노", drinkingDate: "2025.01.11", drinkingTime: "00", sleepingDate: "2025.01.11", sleepingTime: "00"),
+        NoteModel(coffeeName: "아이스 아메리카노", drinkingDate: "2025.01.11", drinkingTime: "00", sleepingDate: "2025.01.11", sleepingTime: "00", review: "2024년 7월 9일 오전 2시"),
+        NoteModel(coffeeName: "카페라떼", drinkingDate: "2025.01.11", drinkingTime: "00", sleepingDate: "2025.01.11", sleepingTime: "00", review: "2024년 7월 9일 오전 2시"),
+        NoteModel(coffeeName: "자바칩 프라푸치노", drinkingDate: "2025.01.11", drinkingTime: "00", sleepingDate: "2025.01.11", sleepingTime: "00", review: "2024년 7월 9일 오전 2시"),
     ]
     
     override func viewDidLoad() {
@@ -32,20 +32,19 @@ class NoteViewController: UIViewController {
         view.noteTableView.delegate = self
         view.noteTableView.dataSource = self
         
-        view.addBtn.addTarget(self, action: #selector(goAddView), for: .touchUpInside)
+        view.addBtn.addTarget(self, action: #selector(goSearchView), for: .touchUpInside)
         return view
     }()
     
-    @objc private func goAddView() {
+    @objc private func goSearchView() {
         let noteSearchVC = NoteSearchViewController()
         navigationController?.pushViewController(noteSearchVC, animated: true)
     }
 
     // 셀 클릭 시 실행할 함수
     private func handleCellTap(_ item: NoteModel) {
-        // 여기에 원하는 동작을 구현
-        print("\(item)을(를) 클릭했습니다!")
         let noteDetailVC = NoteDetailViewController()
+        noteDetailVC.receivedData = item
         navigationController?.pushViewController(noteDetailVC, animated: true)
     }
 }

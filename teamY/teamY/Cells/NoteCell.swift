@@ -115,16 +115,15 @@ class NoteCell: UITableViewCell {
             $0.height.equalTo(18)
         }
         
-        lastLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(10)
-            $0.centerY.equalToSuperview()
-        }
-        
         image.snp.makeConstraints {
             $0.top.equalToSuperview().offset(27)
             $0.leading.equalToSuperview().offset(32)
             $0.bottom.equalToSuperview().offset(-27)
-            $0.width.height.equalTo(26)
+        }
+        
+        lastLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(10)
+            $0.centerY.equalToSuperview()
         }
         
         titleStackView.snp.makeConstraints {
@@ -136,8 +135,11 @@ class NoteCell: UITableViewCell {
             $0.trailing.equalToSuperview().offset(-12)
             $0.bottom.equalToSuperview().offset(-8)
         }
+        
+        image.snp.makeConstraints {
+            $0.width.height.equalTo(26)
+        }
     }
-    
     
     public func configure(model: NoteModel) {
         self.title.text = model.coffeeName

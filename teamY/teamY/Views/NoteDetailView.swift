@@ -33,15 +33,14 @@ class NoteDetailView: UIView {
         $0.contentMode = .scaleAspectFit
     }
     
-    private lazy var coffeeName = UILabel().then {
+    public lazy var coffeeName = UILabel().then {
         $0.font = UIFont.ptdMediumFont(ofSize: 16)
         $0.textColor = .black
         $0.textAlignment = .center
-        
-        $0.text = "아이스 아메리카노"
+        $0.text = nil
     }
     
-    private lazy var drinking = UILabel().then {
+    public lazy var drinking = UILabel().then {
         $0.font = UIFont.ptdRegularFont(ofSize: 14)
         $0.textColor = UIColor(hex: "#8E8E8E")
         $0.textAlignment = .left
@@ -49,7 +48,7 @@ class NoteDetailView: UIView {
         $0.text = "마신 일시 | 2024년 7월 8일 오후 5시"
     }
     
-    private lazy var sleeping = UILabel().then {
+    public lazy var sleeping = UILabel().then {
         $0.font = UIFont.ptdRegularFont(ofSize: 14)
         $0.textColor = UIColor(hex: "#8E8E8E")
         $0.textAlignment = .left
@@ -65,7 +64,7 @@ class NoteDetailView: UIView {
         $0.text = "후기"
     }
     
-    private lazy var reviewContents = UILabel().then {
+    public lazy var reviewContents = UILabel().then {
         $0.font = UIFont.ptdRegularFont(ofSize: 14)
         $0.textColor = UIColor(hex: "#8E8E8E")
         $0.textAlignment = .left

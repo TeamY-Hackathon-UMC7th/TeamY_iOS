@@ -13,4 +13,5 @@ struct NoteModel {
     let drinkingTime: String // 마신 시간 (예: 00시 마심)
     let sleepingDate: String // 날짜 (예: 2025.01.11)
     let sleepingTime: String // 취침 시간 (예: 00시 취침)
+    let review: String       // 후기
 }

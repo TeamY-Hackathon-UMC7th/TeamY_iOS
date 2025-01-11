@@ -25,12 +25,13 @@ class NoteSearchView: UIView {
         $0.text = "어떤 커피를 마셨나요?"
     }
 
-    private lazy var searchBar = SearchBar()
+    public lazy var searchBar = SearchBar()
     
     public lazy var noteSearchTableView = UITableView().then {
         $0.register(NoteSearchCell.self, forCellReuseIdentifier: NoteSearchCell.identifier)
         $0.separatorStyle = .singleLine
         $0.backgroundColor = .clear
+        $0.allowsMultipleSelection = false
     }
     
     public lazy var nextBtn = CustomButton(
@@ -41,12 +42,21 @@ class NoteSearchView: UIView {
         isEnabled: false
     )
     
+    private lazy var emptyLabel = UILabel().then {
+        $0.font = UIFont.ptdRegularFont(ofSize: 16)
+        $0.textColor = UIColor(hex: "#8E8E8E")
+        $0.textAlignment = .center
+        $0.text = "해당하는 음료가 없어요."
+        $0.isHidden = true
+    }
+    
     private func setupView() {
         [
             title,
             searchBar,
             noteSearchTableView,
-            nextBtn
+            nextBtn,
+            emptyLabel
         ].forEach {
             addSubview($0)
         }
@@ -64,7 +74,6 @@ class NoteSearchView: UIView {
         }
         
         nextBtn.snp.makeConstraints {
-            $0.top.equalTo(noteSearchTableView.snp.bottom)
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalToSuperview().offset(-76)
@@ -78,8 +87,11 @@ class NoteSearchView: UIView {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(nextBtn.snp.top)
         }
+        
+        emptyLabel.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(184)
+            $0.leading.equalToSuperview().offset(112)
+            $0.trailing.equalToSuperview().offset(-122)
+        }
     }
-    
-    
-
 }

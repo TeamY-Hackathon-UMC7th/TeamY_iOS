@@ -18,13 +18,24 @@ class AddNoteView: UIView, UITextViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var selectedCoffeeIcon = UIImageView().then {
+        $0.image = UIImage(named: "coffee-bean")
+    }
+    
+    public lazy var selectedCoffee = UILabel().then {
+        $0.font = UIFont.ptdMediumFont(ofSize: 14)
+        $0.textColor = UIColor(hex: "#EE633A")
+        $0.textAlignment = .left
+        $0.text = "[스타벅스] 아이스 아메리카노"
+    }
+    
     private lazy var reviewTitle = UILabel().then {
         $0.font = UIFont.ptdMediumFont(ofSize: 16)
         $0.textColor = .mainColor
         $0.text = "후기"
     }
     
-    let textViewPlaceHolder = "어제는 어땟나요?"
+    let textViewPlaceHolder = "음료의 후기를 남겨주세요! (200자 제한)"
     
     private lazy var reviewTextView = UITextView().then {
         $0.font = UIFont.ptdRegularFont(ofSize: 14)
@@ -48,17 +59,37 @@ class AddNoteView: UIView, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
-            textView.textColor = .mainColor
+            textView.textColor = .black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = textViewPlaceHolder
-            textView.textColor = .lightGray
+            textView.textColor = UIColor(hex: "#8E8E8E")
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        let textCount = textView.text.count
+        if textCount > 200 {
+            warningLabel.isHidden = false
+            textView.layer.borderColor = UIColor(hex: "#FF2929")?.cgColor
+            self.saveBtn.setEnabled(false)
+        } else {
+            warningLabel.isHidden = true
+            textView.layer.borderColor = UIColor.mainColor?.cgColor
+            self.saveBtn.setEnabled(true)
+        }
+    }
+    
+    private let warningLabel = UILabel().then {
+        $0.text = "후기는 최대 200자까지 작성 가능합니다."
+        $0.textColor = UIColor(hex: "#FF2929")
+        $0.font = UIFont.ptdRegularFont(ofSize: 12)
+        $0.isHidden = true
+    }
+
     private lazy var saveBtn = CustomButton(
         backgroundColor: .mainColor!,
         title: "저장하기",
@@ -68,53 +99,71 @@ class AddNoteView: UIView, UITextViewDelegate {
     )
     
     private func setupView() {
-        let stack1 = createCustomStack(iconName: "coffee_fill", titleText: "마신 일시", isPicker: true)
-        let stack2 = createCustomStack(iconName: "moon_fill", titleText: "취침 일시", isPicker: true)
-        let stack3 = createCustomStack(iconName: "coffee-bean_fill", titleText: "마신 메뉴", isPicker: false)
+        let stack1 = createCustomStack(iconName: "coffee_fill", titleText: "마신 일시")
+        let stack2 = createCustomStack(iconName: "moon_fill", titleText: "취침 일시")
         
-        let mainStack = UIStackView(arrangedSubviews: [stack1, stack2, stack3]).then {
+        let mainStack = UIStackView(arrangedSubviews: [stack1, stack2]).then {
             $0.axis = .vertical
-            $0.spacing = 30
+            $0.spacing = 22
             $0.alignment = .fill
             $0.distribution = .equalSpacing
         }
         
         [
+            selectedCoffeeIcon,
+            selectedCoffee,
             mainStack,
             reviewTitle,
             reviewTextView,
+            warningLabel,
             saveBtn
         ].forEach {
             addSubview($0)
         }
         
+        selectedCoffeeIcon.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(17)
+            $0.leading.equalToSuperview().offset(34)
+            $0.width.height.equalTo(18)
+        }
+        
+        selectedCoffee.snp.makeConstraints {
+            $0.leading.equalTo(selectedCoffeeIcon.snp.trailing).offset(6)
+            $0.centerY.equalTo(selectedCoffeeIcon.snp.centerY)
+        }
+        
         mainStack.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(50)
+            $0.top.equalTo(selectedCoffee.snp.bottom).offset(28)
             $0.leading.equalToSuperview().offset(32)
             $0.trailing.equalToSuperview().offset(-32)
         }
         
         reviewTitle.snp.makeConstraints {
-            $0.top.equalTo(mainStack.snp.bottom).offset(30)
+            $0.top.equalTo(mainStack.snp.bottom).offset(35)
             $0.leading.equalTo(mainStack.snp.leading)
         }
         
         reviewTextView.snp.makeConstraints {
             $0.top.equalTo(reviewTitle.snp.bottom).offset(6)
-            $0.leading.equalToSuperview().offset(32)
+            $0.leading.equalToSuperview().offset(33)
             $0.trailing.equalToSuperview().offset(-32)
-            $0.height.equalTo(250)
+            $0.height.equalTo(200)
+        }
+        
+        warningLabel.snp.makeConstraints {
+            $0.top.equalTo(reviewTextView.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().offset(37)
         }
         
         saveBtn.snp.makeConstraints {
-            $0.top.equalTo(reviewTextView.snp.bottom).offset(86)
+            $0.bottom.equalToSuperview().offset(-76)
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(52)
         }
     }
     
-    func createCustomStack(iconName: String, titleText: String, isPicker: Bool) -> UIStackView {
+    func createCustomStack(iconName: String, titleText: String) -> UIStackView {
         let icon = UIImageView().then {
             $0.image = UIImage(named: iconName)
             $0.contentMode = .scaleAspectFit
@@ -126,50 +175,18 @@ class AddNoteView: UIView, UITextViewDelegate {
             $0.text = titleText
         }
         
-        var stack = UIStackView()
-
-        if (isPicker) {
-            let dateTimePicker = UIDatePicker().then {
-                $0.datePickerMode = .dateAndTime
-                $0.backgroundColor = .clear
-                $0.tintColor = .action
-                $0.locale = Locale(identifier: "ko_KR")
-            }
-            
-            stack = UIStackView(arrangedSubviews: [icon, title, dateTimePicker]).then {
-                $0.axis = .horizontal
-                $0.spacing = 10
-                $0.alignment = .fill
-                $0.distribution = .fill
-            }
-        } else {
-            let textField = UITextField().then {
-                $0.font = UIFont.ptdMediumFont(ofSize: 16)
-                $0.textColor = .mainColor
-                $0.textAlignment = .left
-                $0.backgroundColor = UIColor(hex: "#FFFBF8")
-                
-                $0.layer.borderColor = UIColor.mainColor?.cgColor
-                $0.layer.borderWidth = 0.7
-                $0.layer.cornerRadius = 10
-                
-                $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0))
-                $0.leftViewMode = .always
-                $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0))
-                $0.rightViewMode = .always
-            }
-            
-            textField.snp.makeConstraints {
-                $0.width.equalTo(194)
-                $0.height.equalTo(40)
-            }
-            
-            stack = UIStackView(arrangedSubviews: [icon, title, textField]).then {
-                $0.axis = .horizontal
-                $0.spacing = 10
-                $0.alignment = .fill
-                $0.distribution = .fill
-            }
+        let dateTimePicker = UIDatePicker().then {
+            $0.datePickerMode = .dateAndTime
+            $0.backgroundColor = .clear
+            $0.tintColor = .action
+            $0.locale = Locale(identifier: "ko_KR")
+        }
+        
+        let stack = UIStackView(arrangedSubviews: [icon, title, dateTimePicker]).then {
+            $0.axis = .horizontal
+            $0.spacing = 10
+            $0.alignment = .fill
+            $0.distribution = .fill
         }
         
         stack.snp.makeConstraints {
