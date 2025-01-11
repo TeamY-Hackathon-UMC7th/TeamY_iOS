@@ -8,19 +8,6 @@
 import UIKit
 import Then
 
-
-enum Section: Hashable {
-    case popularBanner
-    case recommmandBanner
-    case flow
-}
-
-
-enum Item: Hashable {
-    case popularMenu  // 아이템 모델 추가해야 함
-    case recommandMenu
-}
-
 class HomeView: UIView {
     // 상단 닉네임 + 알림 버튼
     private let grpTopView = UIView()
@@ -47,7 +34,7 @@ class HomeView: UIView {
     
     // '오늘의 취침 시간 버튼'
     public let btnRecommandDrink = CustomButton().then { btn in
-        btn.configure(title: "오늘의 취침 시간은?", titleColor: .white, radius: 10, backgroundColor: .mainColor ?? .systemBlue, isEnabled: true)
+        btn.configure(title: "지금, 커피 하잔", titleColor: .white, radius: 10, backgroundColor: .mainColor ?? .systemBlue, isEnabled: true)
         
         btn.titleLabel?.font = .ptdSemiBoldFont(ofSize: 14)
     }
@@ -93,6 +80,13 @@ class HomeView: UIView {
             make.trailing.equalToSuperview().inset(11)
             make.width.height.equalTo(24)
         }
+        
+        btnRecommandDrink.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(52)
+            make.width.equalTo(192)
+            make.height.equalTo(54)
+            make.centerX.equalToSuperview()
+        }
     }
     
     // 레아이웃 provider
@@ -120,6 +114,7 @@ class HomeView: UIView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
         
         return section
     }
@@ -133,11 +128,12 @@ class HomeView: UIView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
         
         return section
     }
     
-    public func config(nickname: String){
-        self.lblNickname.text = nickname
-    }
+//    public func config(nickname: String){
+//        self.lblNickname.text = nickname
+//    }
 }

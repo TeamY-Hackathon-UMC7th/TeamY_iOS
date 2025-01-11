@@ -50,8 +50,8 @@ class PopularBannerSectionCell: UICollectionViewCell {
         [
             lblCafeine,
             lblSugar,
+            lblProtein,
             lblCalorie,
-            lblProtein
         ].forEach{infoStackView.addArrangedSubview($0)}
         
         [
