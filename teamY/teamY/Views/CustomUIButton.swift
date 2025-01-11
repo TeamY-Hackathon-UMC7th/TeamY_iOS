@@ -34,7 +34,6 @@ class CustomButton: UIButton {
             backgroundColor: backgroundColor,
             isEnabled: isEnabled ?? true
         )
-        setDefaultHeight(60)
     }
     
     required init?(coder: NSCoder) {

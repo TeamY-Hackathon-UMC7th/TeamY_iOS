@@ -22,7 +22,11 @@ public class MainTabBarController: UITabBarController {
     }
     
     public func configureTabs() {
-        let nav1 = UINavigationController(rootViewController: ViewController())
+        let homeViewController = ViewController()
+        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        homeNavigationController.isNavigationBarHidden = true // 네비게이션 바 숨김
+        
+        let nav1 = UINavigationController(rootViewController: homeViewController)
         let nav2 = UINavigationController(rootViewController: ViewController())
         
         let home = UIImage(named: "TabHome")?.resize(to: CGSize(width: 25, height: 25))
