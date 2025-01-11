@@ -10,7 +10,8 @@ import Then
 
 
 enum Section: Hashable {
-    case banner
+    case popularBanner
+    case recommmandBanner
     case flow
 }
 
