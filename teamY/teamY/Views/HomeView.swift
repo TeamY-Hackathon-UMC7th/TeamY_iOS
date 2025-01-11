@@ -46,7 +46,7 @@ class HomeView: UIView {
     
     // '오늘의 취침 시간 버튼'
     public let btnRecommandDrink = CustomButton().then { btn in
-        btn.configure(title: "오늘의 취침 시간?", titleColor: .white, radius: 10, backgroundColor: .mainColor ?? .systemBlue, isEnabled: true)
+        btn.configure(title: "오늘의 취침 시간은?", titleColor: .white, radius: 10, backgroundColor: .mainColor ?? .systemBlue, isEnabled: true)
         
         btn.titleLabel?.font = .ptdSemiBoldFont(ofSize: 14)
     }
