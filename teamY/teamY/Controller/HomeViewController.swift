@@ -14,9 +14,10 @@ class HomeViewController: UIViewController {
     
     
     init() {
-        view = homeView
-        addAction()
-        setDataSource()
+        super.init(nibName: nil, bundle: nil)
+        self.view = homeView
+        self.addAction()
+        self.setDataSource()
         
         // API 연결 후 스냅샷 생성 추가 예정
     }
@@ -30,14 +31,14 @@ class HomeViewController: UIViewController {
     }
     
     private func setDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: homeView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            switch itemIdentifier {
-            case .popularMenu: // 각 셀에 config 설정
-            case .recommandMenu:
-            default:
-                return UICollectionViewCell()
-            }
-        })
+//        dataSource = UICollectionViewDiffableDataSource(collectionView: homeView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+//            switch itemIdentifier {
+//            case .popularMenu: // 각 셀에 config 설정
+//            case .recommandMenu:
+//            default:
+//                return UICollectionViewCell()
+//            }
+//        })
     }
 
     private func addAction() {

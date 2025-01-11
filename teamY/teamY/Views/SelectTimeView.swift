@@ -21,7 +21,8 @@ class SelectTimeView: UIView {
     
     // 달 이미지뷰
     private let imageView = UIImageView().then { view in
-        view.image = .init(systemName: "moon.fill")?.withTintColor(.mainColor ?? .black)
+        view.image = .init(systemName: "moon.fill")
+        view.tintColor = .mainColor
     }
     
     // 시간 선택 데이트피커
@@ -30,7 +31,10 @@ class SelectTimeView: UIView {
         picker.layer.cornerRadius = 10
         picker.layer.borderColor = UIColor.mainColor?.cgColor
         picker.layer.borderWidth = 0.7
+        picker.locale = Locale(identifier: "ko-KR_POSIX")
     }
+    
+//    public let timeDropDown = UIDrop
     
     // -시
     private let lblTime = UILabel().then { lbl in
@@ -48,6 +52,7 @@ class SelectTimeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.backgroundColor = .background
         setSubView()
         setUI()
     }
@@ -74,11 +79,11 @@ class SelectTimeView: UIView {
         // "오늘 몇 시에 주무실 건가요" 라벨
         lblTitle.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).inset(32)
-            make.horizontalEdges.equalToSuperview().inset(88) // 인셋을 다르게 해야 할듯한데
+            make.horizontalEdges.equalToSuperview().inset(10)
         }
         
         grpSelectTime.snp.makeConstraints { make in
-            make.top.equalTo(lblTime.snp.bottom).offset(90)
+            make.top.equalTo(lblTitle.snp.bottom).offset(90)
             make.height.equalTo(50)
             make.horizontalEdges.equalToSuperview().inset(44)
         }
@@ -87,12 +92,14 @@ class SelectTimeView: UIView {
         datePicker.snp.makeConstraints { make in
             make.width.equalTo(180)
             make.verticalEdges.equalToSuperview()
-            make.centerX.equalToSuperview()
+//            make.centerX.equalToSuperview()
+            make.leading.equalTo(imageView.snp.trailing).offset(47)
         }
         
         // 달 모양 이미지뷰
         imageView.snp.makeConstraints { make in
-            make.trailing.equalTo(datePicker.snp.leading).offset(47)
+//            make.trailing.equalTo(datePicker.snp.leading)
+            make.leading.equalToSuperview()
             make.width.height.equalTo(24)
             make.centerY.equalToSuperview()
         }
