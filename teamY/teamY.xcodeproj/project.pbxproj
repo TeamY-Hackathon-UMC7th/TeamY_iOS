@@ -6,6 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		16724EFF2D325662006BFF69 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 16724EFE2D325662006BFF69 /* SDWebImage */; };
+		16724F012D325662006BFF69 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F002D325662006BFF69 /* SDWebImageMapKit */; };
+		16724F042D325696006BFF69 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F032D325696006BFF69 /* Then */; };
+		16724F0C2D32572E006BFF69 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F0B2D32572E006BFF69 /* CombineMoya */; };
+		16724F0E2D32572E006BFF69 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F0D2D32572E006BFF69 /* Moya */; };
+		16724F102D32572E006BFF69 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F0F2D32572E006BFF69 /* ReactiveMoya */; };
+		16724F122D32572E006BFF69 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F112D32572E006BFF69 /* RxMoya */; };
+		16724F152D325800006BFF69 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F142D325800006BFF69 /* SnapKit */; };
+		16724F3A2D325896006BFF69 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F392D325896006BFF69 /* KeychainSwift */; };
+		16724F3D2D32590F006BFF69 /* SwiftyToaster in Frameworks */ = {isa = PBXBuildFile; productRef = 16724F3C2D32590F006BFF69 /* SwiftyToaster */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		16724E942D3230A3006BFF69 /* teamY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +49,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16724F3A2D325896006BFF69 /* KeychainSwift in Frameworks */,
+				16724F012D325662006BFF69 /* SDWebImageMapKit in Frameworks */,
+				16724F152D325800006BFF69 /* SnapKit in Frameworks */,
+				16724F0C2D32572E006BFF69 /* CombineMoya in Frameworks */,
+				16724F042D325696006BFF69 /* Then in Frameworks */,
+				16724F102D32572E006BFF69 /* ReactiveMoya in Frameworks */,
+				16724F122D32572E006BFF69 /* RxMoya in Frameworks */,
+				16724F3D2D32590F006BFF69 /* SwiftyToaster in Frameworks */,
+				16724F0E2D32572E006BFF69 /* Moya in Frameworks */,
+				16724EFF2D325662006BFF69 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +101,16 @@
 			);
 			name = teamY;
 			packageProductDependencies = (
+				16724EFE2D325662006BFF69 /* SDWebImage */,
+				16724F002D325662006BFF69 /* SDWebImageMapKit */,
+				16724F032D325696006BFF69 /* Then */,
+				16724F0B2D32572E006BFF69 /* CombineMoya */,
+				16724F0D2D32572E006BFF69 /* Moya */,
+				16724F0F2D32572E006BFF69 /* ReactiveMoya */,
+				16724F112D32572E006BFF69 /* RxMoya */,
+				16724F142D325800006BFF69 /* SnapKit */,
+				16724F392D325896006BFF69 /* KeychainSwift */,
+				16724F3C2D32590F006BFF69 /* SwiftyToaster */,
 			);
 			productName = teamY;
 			productReference = 16724E942D3230A3006BFF69 /* teamY.app */;
@@ -107,6 +140,14 @@
 			);
 			mainGroup = 16724E8B2D3230A3006BFF69;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				16724EFD2D325662006BFF69 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				16724F022D325696006BFF69 /* XCRemoteSwiftPackageReference "Then" */,
+				16724F0A2D32572E006BFF69 /* XCRemoteSwiftPackageReference "Moya" */,
+				16724F132D325800006BFF69 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				16724F382D325896006BFF69 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				16724F3B2D32590F006BFF69 /* XCRemoteSwiftPackageReference "SwiftyToaster" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 16724E952D3230A3006BFF69 /* Products */;
 			projectDirPath = "";
@@ -335,6 +376,110 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		16724EFD2D325662006BFF69 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
+		16724F022D325696006BFF69 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		16724F0A2D32572E006BFF69 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		16724F132D325800006BFF69 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		16724F382D325896006BFF69 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
+		16724F3B2D32590F006BFF69 /* XCRemoteSwiftPackageReference "SwiftyToaster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/noeyiz/SwiftyToaster";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16724EFE2D325662006BFF69 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724EFD2D325662006BFF69 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		16724F002D325662006BFF69 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724EFD2D325662006BFF69 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		16724F032D325696006BFF69 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F022D325696006BFF69 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		16724F0B2D32572E006BFF69 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F0A2D32572E006BFF69 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		16724F0D2D32572E006BFF69 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F0A2D32572E006BFF69 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		16724F0F2D32572E006BFF69 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F0A2D32572E006BFF69 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		16724F112D32572E006BFF69 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F0A2D32572E006BFF69 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		16724F142D325800006BFF69 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F132D325800006BFF69 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		16724F392D325896006BFF69 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F382D325896006BFF69 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		16724F3C2D32590F006BFF69 /* SwiftyToaster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16724F3B2D32590F006BFF69 /* XCRemoteSwiftPackageReference "SwiftyToaster" */;
+			productName = SwiftyToaster;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 16724E8C2D3230A3006BFF69 /* Project object */;
 }
