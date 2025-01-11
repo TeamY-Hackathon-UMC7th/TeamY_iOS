@@ -37,7 +37,8 @@ class HomeView: UIView {
     // 컬렉션 뷰
     public lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.createLayout()).then { view in
         // 셀 등록 (헤더 포함)
-        
+        view.register(BannerSectionCell.self, forCellWithReuseIdentifier: BannerSectionCell.id)
+        view.register(FlowSectionCell.self, forCellWithReuseIdentifier: FlowSectionCell.id)
         
         // 헤더 등록
         view.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCell.id)
