@@ -3,7 +3,7 @@
 
 ## 🍎 Developers
 
-| [@doyeonk429](https://github.com/doyeonk429) | [@minyoy](https://github.com/minyoy) | [@](https://github.com/) |
+| [@doyeonk429](https://github.com/doyeonk429) | [@LeeeeSuHyeon](https://github.com/LeeeeSuHyeon) | [@minyoy](https://github.com/minyoy) |
 |:---:|:---:|:---:|
 | image | image | image |
 | `stack` | `stack` | `stack` |
