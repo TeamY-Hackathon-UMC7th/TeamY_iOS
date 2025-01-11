@@ -12,12 +12,12 @@ import Then
 class LoginView: UIView {
     
     lazy var logoImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "cup.and.heat.waves.fill")?.withRenderingMode(.alwaysTemplate)
+        $0.image = UIImage(named: "LastCoffee")
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .brown
     }
     
-    private let descriptionlabel = UILabel().then {
+    let descriptionlabel = UILabel().then {
         $0.text = "사용할 닉네임을 입력해주세요"
         $0.textColor = .black
         $0.font = UIFont.ptdMediumFont(ofSize: 14)
@@ -31,15 +31,16 @@ class LoginView: UIView {
         $0.textField.keyboardType = .default
     }
     
-    private let checkButton = CustomButton(
+    let checkButton = CustomButton(
         backgroundColor: .gray,
         title: "로그인",
         titleColor: .white,
+        font: .ptdSemiBoldFont(ofSize: 18),
         radius: 10,
         isEnabled: false
     )
     
-    private let joinQView = JoinStackView()
+    let joinQView = JoinStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,23 +63,18 @@ class LoginView: UIView {
     private func setupConstraints() {
         logoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(120) // 상단 여백
-            make.width.height.equalTo(100)
-        }
-        
-        descriptionlabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(logoImageView.snp.bottom).offset(10)
+            make.top.equalToSuperview().offset(128) // 상단 여백
+            make.width.equalTo(ScreenWidth * 0.3)
         }
 
         nickNameField.snp.makeConstraints { make in
-            make.top.equalTo(descriptionlabel.snp.bottom).offset(58)
+            make.top.equalTo(logoImageView.snp.bottom).offset(65)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(52)
         }
 
         checkButton.snp.makeConstraints { make in
-            make.top.equalTo(nickNameField.snp.bottom).offset(54)
+            make.top.equalTo(nickNameField.snp.bottom).offset(60)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(52)
         }

@@ -56,7 +56,7 @@ public class CustomTextFieldView: UIView, UITextFieldDelegate {
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.backgroundColor = UIColor.white
         textField.delegate = self
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor.brown.cgColor
         textField.layer.borderWidth = 0.7
         textField.layer.cornerRadius = 10
         
@@ -70,7 +70,6 @@ public class CustomTextFieldView: UIView, UITextFieldDelegate {
             string: textFieldPlaceholder,
             attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
         )
-        
         
         addSubview(textField)
         addSubview(validationLabel)
@@ -92,7 +91,7 @@ public class CustomTextFieldView: UIView, UITextFieldDelegate {
         }
     }
     
-    public func updateValidationText(_ text: String, isHidden: Bool, color: UIColor?) {
+    public func updateValidationText(text: String, isHidden: Bool, color: UIColor? = nil) {
         validationLabel.text = text
         validationLabel.isHidden = isHidden
         validationLabel.textColor = color

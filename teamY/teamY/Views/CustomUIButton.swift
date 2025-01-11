@@ -21,6 +21,7 @@ class CustomButton: UIButton {
         backgroundColor: UIColor = .systemBlue,
         title: String = "",
         titleColor: UIColor = .black,
+        font: UIFont,
         radius: CGFloat? = nil,
         isEnabled: Bool? = nil
     ) {
@@ -28,6 +29,7 @@ class CustomButton: UIButton {
         configureButton(
             title: title,
             titleColor: titleColor,
+            font: font,
             radius: radius ?? 10,
             backgroundColor: backgroundColor,
             isEnabled: isEnabled ?? true
@@ -44,6 +46,7 @@ class CustomButton: UIButton {
     func configure(
         title: String,
         titleColor: UIColor,
+        font: UIFont,
         radius: CGFloat?,
         backgroundColor: UIColor,
         isEnabled: Bool?
@@ -51,6 +54,7 @@ class CustomButton: UIButton {
         configureButton(
             title: title,
             titleColor: titleColor,
+            font: font,
             radius: radius ?? 10,
             backgroundColor: backgroundColor,
             isEnabled: isEnabled ?? true
@@ -67,13 +71,14 @@ class CustomButton: UIButton {
     private func configureButton(
         title: String,
         titleColor: UIColor,
+        font: UIFont,
         radius: CGFloat,
         backgroundColor: UIColor,
         isEnabled: Bool
     ) {
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
-        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        self.titleLabel?.font = font
         self.layer.cornerRadius = radius
         self.originalBackgroundColor = backgroundColor
         self.isEnabled = isEnabled
@@ -81,7 +86,7 @@ class CustomButton: UIButton {
     }
     
     private func updateBackgroundColor() {
-        self.backgroundColor = self.isEnabled ? originalBackgroundColor : .gray
+        self.backgroundColor = self.isEnabled ? .brown : .gray
     }
     
     private func setDefaultHeight(_ height: CGFloat) {
