@@ -88,7 +88,7 @@ class PopularBannerSectionCell: UICollectionViewCell {
     
     public func config(title: String, imageURL: String, cafeine: String, sugar: String, calorie: String, protein: String) {
         lblTitle.text = title
-        // 이미지 설정
+        imageView.sd_setImage(with: URL(string: imageURL))
         
         lblCafeine.config(value: cafeine)
         lblSugar.config(value: sugar)
